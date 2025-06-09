@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florian-Entrümpelungen | Professionelle Entrümpelungen in Regensburg</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #2c5aa0, #1e3a5f);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(44, 90, 160, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2c5aa0;
+            font-size: 1.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c5aa0, #1e3a5f);
+            color: white;
+            text-align: center;
+            padding: 120px 2rem 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,800 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .cta-button:hover {
+            background: #e55a2b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.6);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 2rem;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c5aa0;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #ff6b35;
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid #2c5aa0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 80px 2rem;
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            aspect-ratio: 4/3;
+            background: #f0f0f0;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #2c5aa0, transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 0.8;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 2;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Ankauf Section */
+        .ankauf {
+            padding: 80px 2rem;
+            background: linear-gradient(135deg, #2c5aa0, #1e3a5f);
+            color: white;
+        }
+
+        .ankauf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .ankauf-item {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .ankauf-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+
+        .ankauf-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ff6b35;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 2rem;
+            background: #f8f9fa;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: #2c5aa0;
+            color: white;
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: #2c5aa0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .contact-item:hover .contact-icon {
+            color: #2c5aa0;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e3a5f;
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #ff6b35;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .footer-section a:hover {
+            color: #ff6b35;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Modal styles for legal pages */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .legal-content h2 {
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+
+        .legal-content h3 {
+            color: #333;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .legal-content p {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">🏠</div>
+                <span>Florian-Entrümpelungen</span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a onclick="scrollToSection('hero')">Home</a></li>
+                    <li><a onclick="scrollToSection('services')">Leistungen</a></li>
+                    <li><a onclick="scrollToSection('gallery')">Referenzen</a></li>
+                    <li><a onclick="scrollToSection('ankauf')">Ankauf</a></li>
+                    <li><a onclick="scrollToSection('contact')">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Professionelle Entrümpelungen</h1>
+            <p>Wir schaffen Platz - schnell, sauber, zuverlässig</p>
+            <a href="tel:017626660599" class="cta-button">Jetzt anrufen: 0176 26660599</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title fade-in">Unsere Leistungen</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏠</div>
+                    <h3>Entrümpelungen</h3>
+                    <p>Professionelle Entrümpelung von Wohnungen, Häusern, Kellern, Dachböden und Garagen. Wir räumen alles fachgerecht und umweltfreundlich.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">📦</div>
+                    <h3>Wohnungsauflösungen</h3>
+                    <p>Komplette Wohnungsauflösungen mit Wertgegenstand-Sichtung, fachgerechter Entsorgung und Reinigung. Alles aus einer Hand.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🚚</div>
+                    <h3>Umzüge</h3>
+                    <p>Professionelle Umzugsdienstleistungen für Privatpersonen und Unternehmen. Sicher, schnell und zuverlässig.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title fade-in">Unsere Arbeit in Bildern</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <div class="gallery-overlay">
+                        <h3>Keller-Entrümpelung</h3>
+                        <p>Vollständige Entrümpelung eines Kellers mit Sortierung und fachgerechter Entsorgung</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div class="gallery-overlay">
+                        <h3>Dachboden-Räumung</h3>
+                        <p>Professionelle Räumung eines Dachbodens mit Wertgegenstand-Sichtung</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div class="gallery-overlay">
+                        <h3>Komplette Wohnungsauflösung</h3>
+                        <p>Vollständige Auflösung einer Wohnung inklusive Reinigung</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div class="gallery-overlay">
+                        <h3>Garage entrümpeln</h3>
+                        <p>Fachgerechte Entrümpelung einer Garage mit Altmaterial-Entsorgung</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ankauf Section -->
+    <section class="ankauf" id="ankauf">
+        <div class="container">
+            <h2 class="section-title fade-in" style="color: white;">Wir kaufen auch an</h2>
+            <div class="ankauf-grid">
+                <div class="ankauf-item fade-in">
+                    <div class="ankauf-icon">🏺</div>
+                    <h3>Porzellan</h3>
+                    <p>Wertvolles Porzellan und Keramik</p>
+                </div>
+                <div class="ankauf-item fade-in">
+                    <div class="ankauf-icon">📮</div>
+                    <h3>Briefmarken</h3>
+                    <p>Briefmarkensammlungen und Einzelstücke</p>
+                </div>
+                <div class="ankauf-item fade-in">
+                    <div class="ankauf-icon">🪑</div>
+                    <h3>Antike Gegenstände</h3>
+                    <p>Möbel, Uhren und andere Antiquitäten</p>
+                </div>
+                <div class="ankauf-item fade-in">
+                    <div class="ankauf-icon">🧸</div>
+                    <h3>Antikes Spielzeug</h3>
+                    <p>Altes Spielzeug und Sammlerobjekte</p>
+                </div>
+                <div class="ankauf-item fade-in">
+                    <div class="ankauf-icon">🖼️</div>
+                    <h3>Ölgemälde</h3>
+                    <p>Kunstwerke und wertvolle Gemälde</p>
+                </div>
+                <div class="ankauf-item fade-in">
+                    <div class="ankauf-icon">🪙</div>
+                    <h3>Münzen</h3>
+                    <p>Münzsammlungen und seltene Münzen</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Kontakt</h2>
+            <div class="contact-content">
+                <div class="contact-info fade-in">
+                    <h3 style="color: #2c5aa0; margin-bottom: 2rem;">Nehmen Sie Kontakt auf</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">👤</div>
+                        <div>
+                            <strong>Florian Bejenar</strong><br>
+                            Ihr Experte für Entrümpelungen
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <strong>Telefon:</strong><br>
+                            <a href="tel:017626660599">0176 26660599</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Adresse:</strong><br>
+                            Obertraublinger Straße 13<br>
+                            93055 Regensburg
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <strong>Öffnungszeiten:</strong><br>
+                            Mo-Sa: 8:00 - 18:00 Uhr<br>
+                            Notfälle nach Vereinbarung
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-info fade-in">
+                    <h3 style="color: #2c5aa0; margin-bottom: 2rem;">Warum Florian-Entrümpelungen?</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">✅</div>
+                        <div>
+                            <strong>Schnell & Zuverlässig</strong><br>
+                            Termingerechte Ausführung garantiert
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">💰</div>
+                        <div>
+                            <strong>Faire Preise</strong><br>
+                            Kostenlose Besichtigung und Angebot
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">♻️</div>
+                        <div>
+                            <strong>Umweltbewusst</strong><br>
+                            Fachgerechte Entsorgung und Recycling
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🏆</div>
+                        <div>
+                            <strong>Erfahren</strong><br>
+                            Langjährige Erfahrung in der Region
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Florian-Entrümpelungen</h3>
+                <p>Ihr zuverlässiger Partner für Entrümpelungen, Wohnungsauflösungen und Umzüge in Regensburg und Umgebung.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Leistungen</h3>
+                <ul style="list-style: none;">
+                    <li><a onclick="scrollToSection('services')">Entrümpelungen</a></li>
+                    <li><a onclick="scrollToSection('services')">Wohnungsauflösungen</a></li>
+                    <li><a onclick="scrollToSection('services')">Umzüge</a></li>
+                    <li><a onclick="scrollToSection('ankauf')">Ankauf von Wertgegenständen</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Kontakt</h3>
+                <p>Florian Bejenar<br>
+                Obertraublinger Straße 13<br>
+                93055 Regensburg<br>
+                Tel: <a href="tel:017626660599">0176 26660599</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Rechtliches</h3>
+                <ul style="list-style: none;">
+                    <li><a onclick="openModal('impressum')">Impressum</a></li>
+                    <li><a onclick="openModal('datenschutz')">Datenschutz</a></li>
+                    <li><a onclick="openModal('agb')">AGB</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Florian-Entrümpelungen. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="impressum" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('impressum')">&times;</span>
+            <div class="legal-content">
+                <h2>Impressum</h2>
+                <h3>Angaben gemäß § 5 TMG</h3>
+                <p>
+                    Florian Bejenar<br>
+                    Obertraublinger Straße 13<br>
+                    93055 Regensburg
+                </p>
+                <h3>Kontakt</h3>
+                <p>
+                    Telefon: 0176 26660599<br>
+                    E-Mail: info@florian-entruempelungen.de
+                </p>
+                <h3>Umsatzsteuer-ID</h3>
+                <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: [Wird nachgereicht]</p>
+                <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
+                <p>
+                    Florian Bejenar<br>
+                    Obertraublinger Straße 13<br>
+                    93055 Regensburg
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="datenschutz" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('datenschutz')">&times;</span>
+            <div class="legal-content">
+                <h2>Datenschutzerklärung</h2>
+                <h3>1. Datenschutz auf einen Blick</h3>
+                <p>Diese Datenschutzerklärung klärt Sie über die Art, den Umfang und Zweck der Verarbeitung von personenbezogenen Daten auf unserer Website auf.</p>
+                
+                <h3>2. Allgemeine Hinweise und Pflichtinformationen</h3>
+                <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+                
+                <h3>3. Datenerfassung auf unserer Website</h3>
+                <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.</p>
+                
+                <h3>4. Ihre Rechte</h3>
+                <p>Sie haben jederzeit das Recht unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten.</p>
+                
+                <h3>5. Kontakt</h3>
+                <p>Bei Fragen zum Datenschutz wenden Sie sich bitte an:<br>
+                Florian Bejenar<br>
+                Telefon: 0176 26660599</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="agb" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('agb')">&times;</span>
+            <div class="legal-content">
+                <h2>Allgemeine Geschäftsbedingungen</h2>
+                <h3>1. Geltungsbereich</h3>
+                <p>Diese Allgemeinen Geschäftsbedingungen gelten für alle Verträge zwischen Florian-Entrümpelungen und dem Auftraggeber.</p>
+                
+                <h3>2. Leistungsumfang</h3>
+                <p>Der Umfang der zu erbringenden Leistungen ergibt sich aus dem jeweiligen Angebot bzw. der Auftragsbestätigung.</p>
+                
+                <h3>3. Preise und Zahlungsbedingungen</h3>
+                <p>Alle Preise verstehen sich inklusive der gesetzlichen Mehrwertsteuer. Die Zahlung erfolgt nach Leistungserbringung per Rechnung.</p>
+                
+                <h3>4. Termine und Ausführung</h3>
+                <p>Vereinbarte Termine sind für beide Seiten verbindlich. Bei Verhinderung ist eine rechtzeitige Absage erforderlich.</p>
+                
+                <h3>5. Haftung</h3>
+                <p>Wir haften nur für Schäden, die vorsätzlich oder grob fahrlässig verursacht wurden. Die Haftung ist auf den typischen, vorhersehbaren Schaden begrenzt.</p>
+                
+                <h3>6. Eigentumsvorbehalt</h3>
+                <p>Wertgegenstände werden nur nach ausdrücklicher Vereinbarung angekauft. Der Auftraggeber versichert, Eigentümer der zu entrümpelnden Gegenstände zu sein.</p>
+                
+                <h3>7. Salvatorische Klausel</h3>
+                <p>Sollten einzelne Bestimmungen dieser AGB unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            const headerHeight = document.getElementById('header').offsetHeight;
+            const elementPosition = element.offsetTop - headerHeight;
+            
+            window.scrollTo({
+                top: elementPosition,
+                behavior: 'smooth'
+            });
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Fade in animation on scroll
+        function checkFadeIn() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const windowHeight = window.innerHeight;
+            
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkFadeIn);
+        window.addEventListener('load', checkFadeIn);
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Gallery items background images (simulating the uploaded photos)
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const backgroundPatterns = [
+                'linear-gradient(45deg, #2c5aa0 25%, transparent 25%), linear-gradient(-45deg, #2c5aa0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #2c5aa0 75%), linear-gradient(-45deg, transparent 75%, #2c5aa0 75%)',
+                'radial-gradient(circle, #1e3a5f 2px, transparent 2px)',
+                'linear-gradient(90deg, #2c5aa0 50%, #1e3a5f 50%)',
+                'conic-gradient(from 0deg, #2c5aa0, #1e3a5f, #2c5aa0)'
+            ];
+            
+            galleryItems.forEach((item, index) => {
+                item.style.background = backgroundPatterns[index % backgroundPatterns.length];
+                item.style.backgroundSize = '20px 20px, 15px 15px, 20px 20px, 20px 20px';
+            });
+        });
+
+        // Add floating contact button
+        const floatingButton = document.createElement('div');
+        floatingButton.innerHTML = '📞';
+        floatingButton.style.cssText = `
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #ff6b35;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        `;
+        
+        floatingButton.addEventListener('click', function() {
+            window.open('tel:017626660599', '_self');
+        });
+        
+        floatingButton.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.1)';
+            this.style.boxShadow = '0 6px 25px rgba(255, 107, 53, 0.6)';
+        });
+        
+        floatingButton.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+            this.style.boxShadow = '0 4px 20px rgba(255, 107, 53, 0.4)';
+        });
+        
+        document.body.appendChild(floatingButton);
+
+        // Add pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4); }
+                50% { box-shadow: 0 4px 20px rgba(255, 107, 53, 0.8), 0 0 0 10px rgba(255, 107, 53, 0.1); }
+                100% { box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add typing effect to hero title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect when page loads
+        window.addEventListener('load', function() {
+            const heroTitle = document.querySelector('.hero h1');
+            const originalText = heroTitle.textContent;
+            setTimeout(() => {
+                typeWriter(heroTitle, originalText, 80);
+            }, 500);
+        });
+
+        // Add hover effect to service cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.borderTop = '4px solid #ff6b35';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.borderTop = '4px solid #2c5aa0';
+                });
+            });
+        });
+
+        // Add scroll progress indicator
+        const progressBar = document.createElement('div');
+        progressBar.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b35, #2c5aa0);
+            z-index: 2000;
+            transition: width 0.3s ease;
+        `;
+        document.body.appendChild(progressBar);
+
+        window.addEventListener('scroll', function() {
+            const scrolled = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            progressBar.style.width = scrolled + '%';
+        });
+    </script>
+</body>
+</html>
